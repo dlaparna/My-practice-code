@@ -1,0 +1,50 @@
+function QuestionsMarks(str) { 
+  const numReg = /[0-9]/;
+  let sumNum = 0;
+  let qCount = 0;
+  let numHit = false;
+
+  for(i=0;i<str.length;i++){
+    if (str[i] == '?' && numHit){
+      qCount++;
+    }
+    if (str[i].search(numReg) == 0){
+      sumNum = sumNum + Number(str[i]);
+      if (numHit == false){
+        numHit = true;
+      }
+      else {
+        if (!(qCount == 3 && sumNum == 10))
+          return false;
+        else{
+          qCount = 0;
+          numHit = false;
+          sumNum = 0;
+        }
+      }
+    }
+  }
+  return true; 
+}
+
+function QuestionsMarks(str) { 
+  let retCode = false;
+  for(i=0;i<str.length;i++){
+    for(j=i+1;j<str.length;j++){
+      if (Number(str[i]) + Number(str[j]) === 10){
+        retCode = true;
+        console.log("sum is 10",str[i],str[j]);
+        if((str.slice(i,j).split("?").length) -1 < 3){
+          console.log(str.slice(i,j));
+          console.log(str.slice(i,j).split("?").length);
+                return false;
+        }
+      }
+    }
+  }
+  return retCode; 
+}
+
+
+// keep this function call here 
+console.log(QuestionsMarks(readline()));
