@@ -1,0 +1,19 @@
+function FirstReverse(str,ans) {   
+  if (str.length > 0){
+  ans.push(str[str.length-1]); 
+  FirstReverse(str.substring(0,str.length-1),ans);
+  }
+}
+   
+// keep this function call here 
+let ans = [];
+FirstReverse(readline(),ans);
+console.log(ans.join(""));
+
+function FirstReverse(str) {   
+ return(str.split('').reverse().join(''));
+}
+   
+// keep this function call here 
+
+console.log(FirstReverse(readline()));
